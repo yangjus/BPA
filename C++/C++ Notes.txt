@@ -1,0 +1,564 @@
+[ C++ Notes ]
+-------------------
+Section 1, Lecture 1-3
+----------------------
+Why C++?
+Very fast, hardware access, efficient processing
+good for high-end games, AI, device drivers
+
+Compiler- puts texts of code into action
+	GNU C++ or GCC or G++ is a industry standard compiler
+	For Windows, use MinGW compiler
+Integrated Development Environment (IDE) - User interaction with the code
+	Eclipse C++ (Eclipse CDT) is good IDE
+	If already have Eclipse, go to Help dropdown menu -> Marketplace to download CDT
+------------------------
+Section 1, Lecture 4
+-----------------------
+Debugging:
+If program cannot run, then select the project and press [ctrl] + [b]
+Debug folder:
+Project defaults in a debug state with a "Debug" subfolder, to change to release state, go to project tab at top -> Build Configurations -> Set Active -> Release
+Then go to Project tab again -> Build Project which creates a new "Release" subfolder
+
+<< is called insertion operators (< itself is called a chevron)
+
+return 0; means that everything is fine 
+
+To access cmd prompt:
+Click your project on the lefthand side -> Properties -> Resource -> copy the 'Location:'
+go to cmd, type [cd ] (which means change directory) and paste the Location of project file
+[cd [filepath]] will let you navigate into the folder
+type [dir] to look in the contents of the project file
+[cd..] means the cmd will go one file back (into more general file)
+-------------------------
+Section 1, Lecture 5
+--------------------------
+How to output text:
+#include <iostream> //inputting in a file before program is run
+
+using namespace std;
+
+int main() { 		//main() is the function
+	cout << "Starting program..." << flush; //flush tells operating system to clean out memory/buffer and output text, so the next command will not go to next line
+
+	cout << "Hello World!" << endl; //endl outputs text and creates a new line
+
+	cout << "Banana. " << "Apple. " << "Orange." << endl;
+	return 0;
+}
+
+[Ctrl] + [Shift] + [F] helps auto format the code (indentation etc.)
+---------------------------
+Section 2, Lecture 6 - 8
+--------------------------
+String literals - the "" to put text in
+
+string value; //String is class, value is object, declaring an object
+
+Concatenation - adding one string onto another string and storing it into a third string
+
+>> is called extration operators, used for: cin >> (called get from)
+---------------------------
+Section 2, Lecture 9
+---------------------------
+Binary Numbers:
+1011 (1x2x2x2)(0x2x2)(1x2)(1x1) ---> 8+2+1 = 11
+1011 is the binary for 11
+
+Computer uses binary numbers in cells, with each digit as a bit
+(1011 has 4 bits) (on, off, on, on)
+8 cells (bits) is one byte
+----------------------------
+Section 2, Lecture 10
+----------------------------
+#include <limits>  (or <limits.h>)   (or <climits>)    (Before iostream, after namespace std)
+cout << INT_MAX << endl; //max int value
+cout << INT_MIN << endl; //min int value
+
+If you want bigger integer value: add "long" before "int" (or even just long)
+If you want smaller integer value: add "short" before "int" (or even just short)
+
+Use long or short to save Memory
+
+cout << "Size of int: " << sizeof(int) << endl;
+outputs:    Size of int: 4
+
+This indicates that there are 4 bytes (32 bits) in int
+sizeof() is an operator
+
+[unsigned int] means that you can only assign a positive value in it, but one bit can be saved
+default is [int] (which is signed) but that uses up one bit for the negative sign
+-----------------------------
+Section 2, Lecture 11
+-----------------------------
+Floating Point Variable Types
+
+[float] type can have a decimal value assigned to it
+
+After <iostream> in next line, put
+#include <iomanip>
+
+This allows [fixed] to be used as such:
+float value = 89.7;
+cout << fixed << value << endl;
+This outputs the value without scientific
+
+[scientific] is also used in the same way, and puts value in scientific notation
+
+[setprecision()] is used to output a certain number of significant digits:
+cout << setprecision(10) << value << endl;
+
+[double] type can be used for even more digits than float (decimal included)
+[long double] type uses 16 bytes
+-----------------------------
+Section 2, Lecture 12
+------------------------------
+Char and Bool
+
+[bool] type is for "true" or "flase" values
+true = 1;
+false = 0;
+
+[char] type takes exactly 1 byte of memory, used for single characters
+char value = 55;
+outputs: the character "7" because it is in the ASCII format
+char Value = 'i';    (put single quotes around a single character to declar char)
+
+[wchar_t] type is an extension of char type
+
+Casting:
+char value = '7';
+cout << (int) value << endl; //outputs: the int value 55
+casting is the (int) which changes object from one type to another
+------------------------------
+Section 2, Lecture 13 - 15
+------------------------------
+If Statements
+
+int main()
+int is the return type
+main() is the function
+
+If, Else Statements
+
+Controlled sequences:
+\t   ==  adds a tab
+\"   == adds a double quote within a double quote
+
+flush; instead of endl; helps input on the same line
+in if else statements, either the if condition executes or it's always the else condition
+
+If, If-Else Statements
+
+if (...) {
+}
+else if (...) {
+}
+else if (...) {
+}
+else {
+}
+------------------------------
+Section 2, Lecture 16 - 17
+------------------------------
+Comparing Floats
+
+can't use == when comparing floats because it's never precisely the same
+use < or > in order to compare
+
+C++ Conditions
+
+/*
+ *
+ *
+ *\
+
+this allows for any comments to be in between these lines
+-------------------------------
+Section 2, Lecture 18 - 21
+-------------------------------
+~~~While Loops
+
+while (true) { 	//true = an infinite loop
+	cout << "Hello" << endl;
+}
+
+while (- < 5) {
+	cout << "Hello" << endl;
+	i++ //executes Hello five times
+}
+
+~~~Do-While Loops - always will run atleast one time before checking the condition
+
+do {
+
+} while(condition);
+
+const string password = "hello";  //const = cannot change the variable's value
+
+if variable is declared inside a loop, then it is a local variable that only exists in the loop (the 'scope' of the variable)
+
+~~~For Loops
+------------------------------
+Section 2, Lecture 22
+------------------------------
+
+break;   //cuts off and ends the loop and goes to next line after end of loop
+continue;  //skips anything after in the loop it is in, but loops back again like normal
+
+do {
+	(put condition)
+}while (true);   //infinite loop is created until condition with break; is satisfied
+
+------------------------------
+Section 2, Lecture 23
+-----------------------------
+Arrays - list of values contained in one variable
+ex: int values[(# of values)] = {a, b, c, d, e, f...}; //each item in list = element
+
+endl can be used anytime to get a new line
+ex:   cout << endl << ....
+
+if array is given a {} without any values in them, all the array elements will be output to 0
+
+when a value is accessed without being set with a value, it is a bad idea for the program and could crash the program
+---------------------------------
+Section 2, Lecture 24 - 25
+-------------------------------
+~~~Multidimensional Arrays
+
+type arrayName[a][b] = {
+	{ , , ,},    //index 0
+	{ , , ,}     //index 1
+};
+a = row/outer array
+b = column/inner array
+Row number a has b number of elements in it.
+
+output these arrays with nested for loops
+for (int i = 0; i < a; i++) {                //elements of outer array
+	for (int k = 0; k < b; k++) {       //elements of inner array
+		cout << arrayName[i][k] << " " << flush;
+	}
+	cout << endl;
+}
+
+sizeof()  // operator that finds the number of bits of the value in the ()
+
+sizeof(int) //single digit integer will use up 4 bits
+sizeof(string) //any string will use up 8 bits
+
+if we use sizeof(arrayName) on an array, it will find the total # of bits in the array stored
+
+for (int i=0; i < sizeof(values)/sizeof(int); i++)
+//will put out error that unsigned and signed cant be compared
+assign int i as unsigned int i=0 so that it can be compared with the same type
+----------------------------------
+Section 2, Lecture 26
+---------------------------------
+~~~Switch
+
+To find specific values, usually quicker than if statements and executes case by case down the lines.
+
+int value = 4;
+switch (value) {
+	case 3:
+		blahblahblah
+		break;
+	case 4:			//would execute this case
+		blahblahblah
+		break;
+	case 5:
+		blahblahblah
+		break;
+	default:    		//if no else case above matches [value]
+		blahblahblah
+}
+-----------------------------------
+Section 3, Lecture 27
+-----------------------------------
+~~~Functions
+
+void functionName() {
+
+}
+
+define these functions above main() because the compiler must compile from the top to the bottom 
+
+using type [void] will mean the function will not return any data into the 'calling' function (which in this case is int main())
+
+call the function into the main function by doing:  void functionName();
+
+The use of functions is to get the main() function as simple as possible (break down the huge blocks of code into managable sections/steps)
+---------------------------------
+Section 3, Lecture 28
+--------------------------------
+~~~Return Values
+
+arrays cannot be returned
+
+void getInput()  //the void is the return type, void is no return type
+
+int getInput() {   //return type to return a int value out
+	int input;	
+	cin >> input;
+	return input;	//variable local and only available to the function it's in
+}
+
+int main() {
+	
+	int input = getInput();  
+
+//allows return value in function to be put in the main function, now [int selection] stores the other input into main function.
+
+	return 0;
+}
+----------------------------------
+Section 3, Lecture 29
+-----------------------------------
+~~~ Function Parameters
+
+In order to change the name of a variable and all of its calling instances throughout the code, highlight and right click, [Refactor] [Rename]
+
+"passing the variable" = copying value from variable in main function to another variable in another function (eg: void processSelection(int selection));
+
+void processSelection(int option) {   //the selection variable is "passed" to this function and to a different variable int option, everything all has same value
+	switch (option) {
+	.....
+		//no returns here since void return type
+}
+
+int main() {
+	int selection = getInput();
+	processSelection(selection);  //uses the int selection variable value in 					processSelection() function
+	return 0;
+}
+-----------------------------------
+Section 3, Lecture 30
+---------------------------------
+~~~Headers and Prototypes
+
+Prototype of the function - in order to execute functions below main that are otherwise processed line by line downwards
+____________________________________________________________
+void doSomething();     //this is the prototype
+int main() {
+	doSomething();
+	return 0;
+}
+void doSomething() {	//this function is executed before main because of prototype
+	cout << "Hello" << endl;
+}
+__________________________________________________________
+src = source folder
+
+To make a header folder:
+Right click [src] folder, [New], [Other], [Header File], name utils.h
+.cpp and .h are just text files
+_____________________________________________________
+* utils.h
+
+#ifndef UTILS_H_    //if not defined utils.h, if utils.h already defined, then it 			will not define it again  (UTILS_H_ creates unique file) 
+
+#define UTILS_H_    //then define it
+
+void doSomething();	//the prototype function
+
+#endif 	 //ends the if statement
+
+________________________________________________________
+#include "utils.h"  //include gets the file before it's compiled (preprocessor), thus compiler sees all the text that the file has
+
+preprocessor always executes anything that has #
+#include _____ does not end in semicolons because it is not part of the cpp compiler
+
+#include <iostream> is a standard file, already included in computer somewhere
+
+---------------------------------
+Section 4, Lecture 31
+--------------------------------
+~~~Classes
+
+For naming header files, the Java convenction is to capitalize the first letter of the main class / executing file (with int main()), do the same for classes
+
+Coding with 3 conventional files:
+.cpp file for int main() and executing all the functions
+.h file for prototypes so the functions are executed before int main()
+.cpp file that has the code of all the sub functions
+
+Classes - to bundle the state of a thing together (group of functions that define the class(or object))
+
+Allowing compiler to access the functions from the function file to the main file:
+1) put the function constructor in the header file (ex: void speak();) (essentially puts the prototype in the headerfile)
+2) put #include "(the headerfile name)" in the main file (calls the prototype from the headerfile)
+
+To create a class (like a blueprint for something):
+-----------
+[1]
+in header file, take the functions and put them in:
+
+class [name] {
+public:
+	[functions here]
+};
+
+[2]
+in function file, in between function type and its name, put the class name and:
+
+void Cat::speak() {  //:: to indicate function as a member of the Cat class
+	...
+}
+
+3) Once class is established, create an object by calling the class in the main file:
+
+Cat cat1;
+cat1.speak();
+cat1.jump();
+------------
+
+Instantiation - Making an Object from a Class
+--------------------------------
+Section 5, Lecture 32
+--------------------------------
+~~~Data Members
+
+Data Members = class variables
+
+How to make these 3 files easier:
+[1] Create c++ project that builds Hello World
+[2] In the same project folder, create a Class
+[3] Uncheck namespace, contructors, and decontructors (haven't covered yet)
+[4] Name the Class name (which will generate the .h and .cpp names automatically)
+
+Methods - functions in a class
+
+Putting variables in the class represents the state of the object, such as bool happy; under public:, which declares every object made from the class will either be happy = true, or happy = false
+An if statement can be created in the functions file to output something different when happy = true to when happy = false
+
+If variables are under [Private:], then they cannot be accessed and changed outside the class itself
+
+-----------------------------------
+Section 5, Lecture 33
+----------------------------------
+~~~Constructors and Deconstructors
+
+Constructor - special methods that runs when objects are instantiated (created) from the class, separately in each object
+
+Deconstructor - when the object is deallocated (destroyed)
+
+They do not have a return type
+
+Creating a constructor:
+[1] create a function with the same name as the Class (for destructors, use ~[name])
+[2] use no return type
+[3] set variables and anything else
+[4] will be executed when an object is made from the class
+
+Destructor is called to destroy the object (to allow more memory space) after the whatever is in the [curly brackets] that the object is in ends (scope of object is only within its curly brackets)
+----------------------------------
+Section 5, Lecture 34
+----------------------------------
+~~~Getters and Setters
+
+Set method:
+For example, a name is set for the object and you want to change it
+create a method (also known as mutator):
+
+void Cat::setName (string newName) {	//for method file
+	name = newName;
+}
+
+under Public:
+void setName(string newName); 	//for header file (creating prototype)
+
+For get method:
+create a method called string getName(); in header file,
+and in method file
+string getName() {
+	return name;
+}
+--------------------------------------
+Section 5, Lecture 35
+------------------------------------
+~~~String Streams
+
+Allows to concatenate different data types together (from String and double to String only)
+
+#include <sstream>
+
+declare object under int main(): stringstream ss;
+
+ss << "Name is: ";
+ss << name;
+ss << "; Age is: ";
+ss << age;
+cout << ss.str() < endl;  //OR string info = ss.str();		cout << info << endl;
+
+OR
+Just use to_string
+so:
+cout << "Name is: " + name + "; Age is: " + to_string(age);
+--------------------------------------
+Section 5, Lecture 36 - 37
+----------------------------------------
+~~~Overloading Constructors
+
+Can create different versions of the same name method (different parameters in constructor)
+Example:
+Person();
+Person(string name, int age);
+
+~~~The 'this' keyword
+
+variable that contains memory location of each individually created object
+
+Person::Person(string name, int age) {
+	this->name = name;  //this pointer lets compiler know that the name the function 				is referring to is in the private section of the class in 					the header (disambiguate)
+	cout << this << endl;  //outputs the hexadecimal format of the object
+}
+
+Person::Person(string newName, int newAge) {
+	name = newName;   //exact same as this->
+}
+
+Can also use &[object] to output the hexadecimal format
+
+--------------------------------------
+Section 5, Lecture 38
+-------------------------------------
+~~~Constructor Initialization Lists
+
+Another way for using the actual instance variable name in header file to a constructor with (or without) parameters:
+
+Person::Person(): name("unnamed"), age(0) {		//default initializer
+}
+
+Person::Person(string name, int age): name(name), age(age) {
+}
+
+These initializer lists can also be used in the header file too (include an implemenation (curly brackets))
+--------------------------------------
+Section 6, Lecture 39
+-----------------------------------
+~~~Pointers
+
+int nValue = 0;
+int* pnValue = &nValue;	//pointer to an nValue to an int address
+*pnValue	//int value via pointer (to output how much bits int data type takes)
+		//astricks is to reference nValue
+
+Lowers memory footprint of the program by not creating unnecessary duplicate variables but instead create a function to perform the same task but accept a pointer as the argument
+
+
+
+
+
+
+
+
+
+
+
+
+
+
